@@ -82,18 +82,20 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 	self = [super initWithCoder:coder];
 	if (self) {
 		
-		self.faceSize = (CGSize){184, 224};
+		self.faceSize = (CGSize){184, 230};
 
 		self.theme = [[NSUserDefaults standardUserDefaults] integerForKey:@"Theme"];
 		self.useProgrammaticLayout = YES;
-		self.faceStyle = FaceStyleRound;
+		self.faceStyle = FaceStyleRectangular;
 		self.numeralStyle = NumeralStyleAll;
 		self.tickmarkStyle = TickmarkStyleAll;
 		self.majorTickmarkShape = TickmarkShapeRectangular;
 		self.minorTickmarkShape = TickmarkShapeRectangular;
 
 		self.colorRegionStyle = ColorRegionStyleDynamicDuo;
+        self.useMasking = TRUE;
 		self.showDate = YES;
+        self.useOutlinedNumbers = FALSE;
 		
 		[self refreshTheme];
 		
@@ -163,7 +165,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		
 		CGFloat h = 25;
 		
-		NSDictionary *attribs = @{NSFontAttributeName : [NSFont systemFontOfSize:h weight:NSFontWeightMedium], NSForegroundColorAttributeName : self.textColor};
+        NSDictionary *attribs = @{NSFontAttributeName : [NSFont systemFontOfSize:h weight:NSFontWeightMedium], NSForegroundColorAttributeName : self.useOutlinedNumbers ? [self.textColor colorWithAlphaComponent:0] : self.textColor, NSStrokeColorAttributeName : self.textColor, NSStrokeColorAttributeName : self.textColor, NSStrokeWidthAttributeName : self.useOutlinedNumbers ? @3.0 : @0};
 		
 		NSAttributedString *labelText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%i", i == 0 ? 12 : i] attributes:attribs];
 		
@@ -252,9 +254,9 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 
 -(void)setupTickmarksForRectangularFaceWithLayerName:(NSString *)layerName
 {
-	CGFloat margin = 5.0;
+	CGFloat margin = 3.0;
 	CGFloat labelYMargin = 30.0;
-	CGFloat labelXMargin = 24.0;
+	CGFloat labelXMargin = 23.0;
 	
 	SKCropNode *faceMarkings = [SKCropNode node];
 	faceMarkings.name = layerName;
@@ -322,7 +324,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		/* Super hacky hack to inset the tickmarks at the four corners of a curved display instead of doing math */
 		if (i == 6 || i == 7  || i == 23 || i == 24 || i == 36 || i == 37 || i == 53 || i == 54)
 		{
-			workingRadius -= 8;
+			workingRadius -= 0;
 		}
 
 		tick.position = CGPointZero;
@@ -378,7 +380,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		labelNode.anchorPoint = CGPointMake(0.5,0.5);
 		
 		if (i == 1 || i == 11 || i == 12)
-			labelNode.position = CGPointMake(labelXMargin-self.faceSize.width/2 + ((i+1)%3) * (self.faceSize.width-labelXMargin*2)/3.0 + (self.faceSize.width-labelXMargin*2)/6.0, self.faceSize.height/2-labelYMargin);
+			labelNode.position = CGPointMake(labelXMargin-self.faceSize.width/2 + ((i+1)%3) * (self.faceSize.width-labelXMargin*2)/3.0 + (self.faceSize.width-labelXMargin*2)/6.0, self.faceSize.height/2-(labelYMargin+2.5));
 		else if (i == 5 || i == 6 || i == 7)
 			labelNode.position = CGPointMake(labelXMargin-self.faceSize.width/2 + (2-((i+1)%3)) * (self.faceSize.width-labelXMargin*2)/3.0 + (self.faceSize.width-labelXMargin*2)/6.0, -self.faceSize.height/2+labelYMargin);
 		else if (i == 2 || i == 3 || i == 4)
@@ -388,7 +390,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		
 		[faceMarkings addChild:labelNode];
 		
-		NSDictionary *attribs = @{NSFontAttributeName : [NSFont fontWithName:@"Futura-Medium" size:fontSize], NSForegroundColorAttributeName : self.textColor};
+        NSDictionary *attribs = @{NSFontAttributeName : [NSFont fontWithName:@"Futura-Medium" size:fontSize], NSForegroundColorAttributeName : self.useOutlinedNumbers ? [self.textColor colorWithAlphaComponent:0] : self.textColor, NSStrokeColorAttributeName : self.textColor, NSStrokeWidthAttributeName : self.useOutlinedNumbers ? @3.0 : @0};
 		
 		NSAttributedString *labelText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%i", i] attributes:attribs];
 		
@@ -406,7 +408,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		[df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:[[NSLocale preferredLanguages] firstObject]]];
 		[df setDateFormat:@"ccc d"];
 		
-		CGFloat h = 12;
+		CGFloat h = 14;
 		
 		NSDictionary *attribs = @{NSFontAttributeName : [[NSFont systemFontOfSize:h weight:NSFontWeightMedium] smallCaps], NSForegroundColorAttributeName : self.textColor};
 		
@@ -418,7 +420,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		if (self.numeralStyle == NumeralStyleNone)
 			numeralDelta = 10.0;
 		
-		numberLabel.position = CGPointMake(32+numeralDelta, -4);
+		numberLabel.position = CGPointMake(32+numeralDelta, -5);
 		
 		[faceMarkings addChild:numberLabel];
 	}
@@ -638,6 +640,24 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 			secondHandColor = inlayColor;
 			break;
 		}
+        case ThemeGreen:
+        {
+            colorRegionColor = [SKColor colorWithRed:0.547 green:0.892 blue:0.159 alpha:1.000];
+            faceBackgroundColor = [SKColor colorWithWhite:0.9 alpha:1];
+            inlayColor = colorRegionColor;
+            majorMarkColor = [SKColor colorWithWhite:0.9 alpha:1.0];
+            minorMarkColor = majorMarkColor;
+            handColor = [SKColor whiteColor];
+            textColor = [SKColor colorWithWhite:1.0 alpha:1.0];
+            secondHandColor = [SKColor colorWithRed:0.743 green:0.943 blue:0.504 alpha:1.000];
+            
+            alternateTextColor = [SKColor colorWithWhite:0.6 alpha:1];
+            alternateMinorMarkColor = [SKColor colorWithWhite:0.6 alpha:1];
+            alternateMajorMarkColor = [SKColor colorWithWhite:0.6 alpha:1];
+            
+            self.useMasking = YES;
+            break;
+        }
 		case ThemeBondi:
 		{
 			colorRegionColor = [SKColor colorWithRed:0.086 green:0.584 blue:0.706 alpha:1.000];
