@@ -94,13 +94,16 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 
 		self.colorRegionStyle = ColorRegionStyleDynamicDuo;
         self.useMasking = TRUE;
-		self.useOutlinedNumbers = FALSE;
 		self.showDate = YES;
-		self.showBattery = YES;
+<<<<<<< HEAD
+        self.showBattery = YES;
         self.showDailyMessage = YES;
         self.batteryCenter = NO;
         self.romanNumerals = YES;
         self.romanBattery = NO;
+=======
+        self.useOutlinedNumbers = FALSE;
+>>>>>>> master
 		
 		[self refreshTheme];
 		
@@ -189,13 +192,14 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 			}
 			
 		}
+<<<<<<< HEAD
         
         NSAttributedString *labelText;
         
         if (self.romanNumerals) {
-		CGFloat h = 25;
-		
-        NSDictionary *attribs = @{NSFontAttributeName : [NSFont systemFontOfSize:h weight:NSFontWeightMedium], NSForegroundColorAttributeName : self.useOutlinedNumbers ? [self.textColor colorWithAlphaComponent:0] : self.textColor, NSStrokeColorAttributeName : self.textColor, NSStrokeColorAttributeName : self.textColor, NSStrokeWidthAttributeName : self.useOutlinedNumbers ? @3.0 : @0};
+            CGFloat h = 20;
+            
+            NSDictionary *attribs = @{NSFontAttributeName : [NSFont systemFontOfSize:h weight:NSFontWeightMedium], NSForegroundColorAttributeName : self.textColor};
             
             labelText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", [self romain:i == 0 ? 12 : i]] attributes:attribs];
         } else {
@@ -205,6 +209,14 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
             
             labelText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%i", i == 0 ? 12 : i] attributes:attribs];
         }
+=======
+		
+		CGFloat h = 25;
+		
+        NSDictionary *attribs = @{NSFontAttributeName : [NSFont systemFontOfSize:h weight:NSFontWeightMedium], NSForegroundColorAttributeName : self.useOutlinedNumbers ? [self.textColor colorWithAlphaComponent:0] : self.textColor, NSStrokeColorAttributeName : self.textColor, NSStrokeColorAttributeName : self.textColor, NSStrokeWidthAttributeName : self.useOutlinedNumbers ? @3.0 : @0};
+		
+		NSAttributedString *labelText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%i", i == 0 ? 12 : i] attributes:attribs];
+>>>>>>> master
 		
 		SKLabelNode *numberLabel = [SKLabelNode labelNodeWithAttributedText:labelText];
 		numberLabel.position = CGPointMake((workingRadius-labelMargin) * -sin(angle), (workingRadius-labelMargin) * cos(angle) - 9);
@@ -483,8 +495,7 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
 		
 		[faceMarkings addChild:labelNode];
 		
-        NSDictionary *attribs = @{NSFontAttributeName : [NSFont fontWithName:@"Futura-Medium" size:fontSize], NSForegroundColorAttributeName : self.useOutlinedNumbers ? [self.textColor colorWithAlphaComponent:0] : self.textColor, NSStrokeColorAttributeName : self.textColor, NSStrokeWidthAttributeName : self.useOutlinedNumbers ? @3.0 : @0};
-		
+<<<<<<< HEAD
         
         NSAttributedString *labelText;
         
@@ -498,6 +509,11 @@ CGFloat workingRadiusForFaceOfSizeWithAngle(CGSize faceSize, CGFloat angle)
             
             labelText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%i", i] attributes:attribs];
         }
+=======
+        NSDictionary *attribs = @{NSFontAttributeName : [NSFont fontWithName:@"Futura-Medium" size:fontSize], NSForegroundColorAttributeName : self.useOutlinedNumbers ? [self.textColor colorWithAlphaComponent:0] : self.textColor, NSStrokeColorAttributeName : self.textColor, NSStrokeWidthAttributeName : self.useOutlinedNumbers ? @3.0 : @0};
+		
+		NSAttributedString *labelText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%i", i] attributes:attribs];
+>>>>>>> master
 		
 		SKLabelNode *numberLabel = [SKLabelNode labelNodeWithAttributedText:labelText];
 		
