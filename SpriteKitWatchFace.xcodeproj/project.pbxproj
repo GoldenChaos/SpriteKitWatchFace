@@ -76,6 +76,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		96B942232174241D00532CC5 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
+		96B942252174242600532CC5 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS5.1.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
 		B0D30AD0216D5B2500444765 /* SpriteKitWatchFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitWatchFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0D30AD3216D5B2500444765 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B0D30AD4216D5B2500444765 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -116,6 +118,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		96B9422F2174246200532CC5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B0D30ACD216D5B2500444765 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -140,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		96B942222174241D00532CC5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96B942252174242600532CC5 /* WatchKit.framework */,
+				96B942232174241D00532CC5 /* WatchKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B0D30AC7216D5B2500444765 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +167,7 @@
 				B0D30AF9216D5B2700444765 /* SpriteKitWatchFace WatchKit Extension */,
 				B0EB72E9216E69AA0098CF27 /* DesktopShim */,
 				B0D30AD1216D5B2500444765 /* Products */,
+				96B942222174241D00532CC5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -253,6 +272,7 @@
 				B0D30AE4216D5B2700444765 /* Resources */,
 				B0D30B08216D5B2800444765 /* Embed App Extensions */,
 				B06672312171174800FC149F /* Increment Build Number */,
+				96B9422F2174246200532CC5 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -650,7 +670,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.highcaffeinecontent.SpriteKitWatchFace.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goldenchaos.SpriteKitWatchFace.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -671,7 +691,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.highcaffeinecontent.SpriteKitWatchFace.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goldenchaos.SpriteKitWatchFace.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -688,7 +708,11 @@
 				DEVELOPMENT_TEAM = 5BJ5JFAS37;
 				IBSC_MODULE = SpriteKitWatchFace_WatchKit_Extension;
 				INFOPLIST_FILE = "SpriteKitWatchFace WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.highcaffeinecontent.SpriteKitWatchFace.watchkitapp;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.goldenchaos.SpriteKitWatchFace.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = NO;
@@ -705,7 +729,11 @@
 				DEVELOPMENT_TEAM = 5BJ5JFAS37;
 				IBSC_MODULE = SpriteKitWatchFace_WatchKit_Extension;
 				INFOPLIST_FILE = "SpriteKitWatchFace WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.highcaffeinecontent.SpriteKitWatchFace.watchkitapp;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.goldenchaos.SpriteKitWatchFace.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = NO;
@@ -725,7 +753,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.highcaffeinecontent.SpriteKitWatchFace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goldenchaos.SpriteKitWatchFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -742,7 +770,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.highcaffeinecontent.SpriteKitWatchFace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goldenchaos.SpriteKitWatchFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -763,7 +791,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				PRODUCT_BUNDLE_IDENTIFIER = com.highcaffeinecontent.SKWFDesktopShim;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goldenchaos.SKWFDesktopShim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};
@@ -784,7 +812,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				PRODUCT_BUNDLE_IDENTIFIER = com.highcaffeinecontent.SKWFDesktopShim;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goldenchaos.SKWFDesktopShim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 			};

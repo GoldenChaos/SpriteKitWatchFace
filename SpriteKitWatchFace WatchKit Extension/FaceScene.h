@@ -12,34 +12,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
-<<<<<<< HEAD
-	ThemeHermesPink,
-	ThemeHermesOrange,
-	ThemeNavy,
-	ThemeTidepod,
-	ThemeBretonnia,
-	ThemeNoir,
-	ThemeContrast,
-	ThemeVictoire,
-	ThemeLiquid,
-	ThemeAngler,
-	ThemeSculley,
-	ThemeKitty,
-	ThemeDelay,
-	ThemeDiesel,
-	ThemeLuxe,
-	ThemeSage,
-	ThemeBondi,
-	ThemeTangerine,
-	ThemeStrawberry,
-	ThemePawn,
-	ThemeRoyal,
-	ThemeMarques,
-	ThemeVox,
-	ThemeSummer,
-    ThemeGradient,
-	ThemeMAX
-=======
     ThemeHermesPink,
     ThemeHermesOrange,
     ThemeNavy,
@@ -65,8 +37,8 @@ typedef enum : NSUInteger {
     ThemeMarques,
     ThemeVox,
     ThemeSummer,
+    ThemeGradient,
     ThemeMAX
->>>>>>> master
 } Theme;
 
 typedef enum : NSUInteger {
@@ -134,11 +106,11 @@ typedef enum : NSUInteger {
 
 @property BOOL useProgrammaticLayout;
 @property BOOL useMasking;
+@property BOOL useOutlinedNumbers;
 @property BOOL showDate;
 @property BOOL showBattery;
 @property BOOL showDailyMessage;
 @property BOOL showCenterDisc;
-@property BOOL useOutlinedNumbers;
 
 @property BOOL batteryCenter;
 @property BOOL romanNumerals;
